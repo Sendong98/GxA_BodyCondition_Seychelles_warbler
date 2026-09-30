@@ -18,7 +18,7 @@ Age-related declines in performance, commonly referred to as senescence, are the
 
 `5.heritability_GRM.R` describes the structure of GRM-based animal models (Model 8).
 
-`6.heritability_age_classes.R` describes the structure of pedigree- and GRM-based animal models for different age classes (Models 9-10) and '7.plot_heritability_age_class.R' for plotting the age classes h2
+`6.heritability_age_classes.R` describes the structure of pedigree- and GRM-based animal models for different age classes (Models 9-10) and `7.plot_heritability_age_class.R` for plotting the age classes h2
 
 `8.IxA_models.R` describes random regression models for testing individual-by-age interactions, with polynomial age terms in the random part (describes the structure and dataset for Models 11S1 to 11S3).
 
