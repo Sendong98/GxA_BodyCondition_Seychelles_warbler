@@ -12,17 +12,23 @@ Age-related declines in performance, commonly referred to as senescence, are the
 
 `2.dataset_distribution_description.R` contains the code for a basic distribution description of age, body mass, tarsus length, sex differences, etc.
 
-`3.senescence_pattern_sw.R` describes how we estimate the senescence pattern of body condition in the Seychelles warbler (Describes the structure and dataset of Model 1 to Model 6).
+`3.senescence_pattern_sw.R` describes how we estimate the senescence pattern of body condition in the Seychelles warbler (describes the structure and dataset for Models 1-6).
 
-`4.heritability_estimates_of_body_condition.R` describes the structure of pedigree- and GRM-based animal models and also estimates for different age classes (Describes the structure and dataset of Model 7 to Model 10).
+`4.heritability_estimates_of_body_condition_stepwise.R` describes the structure of heritability estimates - stepwise and using pedigree data. (Model 7S1-7S5)
 
-`5.IxA_models.R` describes the random regression models for testing individual-by-age interactions with polynomial terms of age in the random part (Describes the structure and dataset of Model 11S1 to Model 11S3).
+`5.heritability_GRM.R` describes the structure of GRM-based animal models (Model 8).
 
-`6.GxA_models.R` describes the random regression animal models for testing genotype-by-age interactions with polynomial terms of age and permanent environment in the random part (Describes the structure and dataset of Model 12S1 to Model 12S11).
+`6.heritability_age_classes.R` describes the structure of pedigree- and GRM-based animal models for different age classes (Models 9-10) and '7.plot_heritability_age_class.R' for plotting the age classes h2
 
-`7.character-state_model.R` contains the character state model that tests the genetic correlation between different age classes (Describes the structure and dataset of Model 13).
+`8.IxA_models.R` describes random regression models for testing individual-by-age interactions, with polynomial age terms in the random part (describes the structure and dataset for Models 11S1 to 11S3).
 
-`8.reacnrom_model.R` In this script, the reacnorm package was used to separate the additive genetic variance into Vg and Vgxa (Model 14).
+`9.GxA_models.R` describes the random regression animal models for testing genotype-by-age interactions with polynomial terms of age and permanent environment in the random part (Describes the structure and dataset of Model 12S1 to Model 12S11). '10.IxA_GxA_checks_plots.R' contains the code to diagnose the models and plots. 
+
+`11.character-state_model_plots.R` contains the character state model that tests the genetic correlation between different age classes and plots (Describes the structure and dataset of Model 13).
+
+`12.submit_gxa_array.sh` describes how to submit the R scripts / heavy jobs to the HPC, including all the gxa models and character-state_model.
+
+`13.Reactnorm_models.R` In this script, the reacnorm package was used to separate the additive genetic variance into Vg and Vgxa (Model 14).
 
 ## Having issues
 If you have any trouble, please file an issue in the GitHub repository.
