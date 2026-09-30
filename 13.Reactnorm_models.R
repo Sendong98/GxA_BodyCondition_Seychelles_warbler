@@ -329,10 +329,13 @@ post_renamed <- post_gen_sw_cubic %>%
     V_GxA = V_AxE
   )
 
-mcmc_areas(post_renamed,
+plot_qubic <- mcmc_areas(post_renamed,
            pars = c("V_Add", "V_G", "V_GxA"),
            prob = 0.95,
            area_method = "scaled height")
+
+ggsave("./p_reacnorm.pdf", plot = plot_qubic, width = 200, height = 150, units = "mm", dpi = 300)
+
 
 post_gen_sw_cubic %>%
   mutate(prop_GxE = V_AxE / V_Add) %>%
