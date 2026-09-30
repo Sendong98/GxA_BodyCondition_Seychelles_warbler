@@ -30,5 +30,5 @@ If you have any trouble, please file an issue in the GitHub repository.
 ## License
 MIT
 
-![Seychelles warbler](https://github.com/Sendong98/GxA_BodyCondition_Seychelles_warbler/blob/main/figures/IMG_1053_seychelles_warbler.jpg)
+![Seychelles warbler](https://github.com/Sendong98/GxA_BodyCondition_Seychelles_warbler/blob/main/figures/IMG_1053_seychelles_warbler.jpg =250x250)
 
