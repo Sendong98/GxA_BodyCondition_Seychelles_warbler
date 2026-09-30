@@ -1,5 +1,5 @@
 # GxA of Body Condition in the Seychelles warbler
-R code and dataset for all analyses related to: No evidence of age-dependent changes in the additive genetic variance of body condition in a wild avian population.
+R code and dataset for all analyses related to the paper: "No evidence of age-dependent changes in the additive genetic variance of body condition in a wild avian population."
 
 The 'dataset' and 'figures' folders contain all the raw data and figures used in the paper.
 
