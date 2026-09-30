@@ -22,7 +22,7 @@ Age-related declines in performance, commonly referred to as senescence, are the
 
 `8.IxA_models.R` describes random regression models for testing individual-by-age interactions, with polynomial age terms in the random part (describes the structure and dataset for Models 11S1 to 11S3).
 
-`9.GxA_models.R` describes the random regression animal models for testing genotype-by-age interactions with polynomial terms of age and permanent environment in the random part (Describes the structure and dataset of Model 12S1 to Model 12S11). '10.IxA_GxA_checks_plots.R' contains the code to diagnose the models and plots. 
+`9.GxA_models.R` describes the random regression animal models for testing genotype-by-age interactions with polynomial terms of age and permanent environment in the random part (Describes the structure and dataset of Model 12S1 to Model 12S11). `10.IxA_GxA_checks_plots.R` contains the code to diagnose the models and plots. 
 
 `11.character-state_model_plots.R` contains the character state model that tests the genetic correlation between different age classes and plots (Describes the structure and dataset of Model 13).
 
