@@ -26,7 +26,7 @@ dat$age_last_seen <- time_length(interval(dat$BirthDate, dat$LastSeen), "years")
 #scale for modelling
 dat$minutes_s <- scale(dat$minutes)
 
-#basic model1 (log didnt improve much)
+#basic Model1 (log didnt improve much)
 m1 <- lmer(formula = BodyMass ~ age_year + I(age_year^2) + SexEstimate + RightTarsus + summer + minutes_s + avg_invert + group_size +
              (1|BirthYear) +(1|CatchYear) + (1|Observer) + (1|BirdID), REML = F ,data = dat)
 simulationOutput <- simulateResiduals(fittedModel = m1, plot = T)
@@ -61,7 +61,40 @@ p_m1 <- ggplot(plot_data, aes(x = x, y = predicted)) +
 
 ggsave("./figures/p_mass_plot_all_ageing_20260502.pdf", plot = p_m1, width = 200, height = 150, units = "mm", dpi = 300)
 
-#post-peak ageing
+
+#test for minutes^2, not significate
+m1.2 <- lmer(formula = BodyMass ~ age_year + I(age_year^2) + SexEstimate + RightTarsus + summer + minutes_s + I(minutes_s^2)+ avg_invert + group_size +
+             (1|BirthYear) +(1|CatchYear) + (1|Observer) + (1|BirdID), REML = F ,data = dat)
+simulationOutput <- simulateResiduals(fittedModel = m1.2, plot = T)
+qqnorm(resid(m1.2))
+qqline(resid(m1.2))
+vif(m1.2)
+summary(m1.2)
+tab_model(m1.2)
+
+#Sex interaction (Model 2)
+#Add sex*age_year interaction, with minutes^2
+m2 <- lmer(formula = BodyMass ~ age_year*SexEstimate + I(age_year^2)*SexEstimate + RightTarsus + summer + minutes_s + I(minutes_s^2)+ avg_invert + group_size +
+             (1|BirthYear) +(1|CatchYear) + (1|Observer) + (1|BirdID), REML = F ,data = dat)
+simulationOutput <- simulateResiduals(fittedModel = m2, plot = T)
+qqnorm(resid(m2))
+qqline(resid(m2))
+vif(m2)
+summary(m2)
+tab_model(m2)
+
+#Add sex*age_year interaction, with linear minutes
+m2.1 <- lmer(formula = BodyMass ~ age_year*SexEstimate + RightTarsus + summer + minutes_s + avg_invert + group_size +
+               (1|BirthYear) +(1|CatchYear) + (1|Observer) + (1|BirdID), REML = F ,data = dat)
+simulationOutput <- simulateResiduals(fittedModel = m2, plot = T)
+qqnorm(resid(m2.1))
+qqline(resid(m2.1))
+vif(m2.1)
+summary(m2.1)
+tab_model(m2.1)
+
+#post-peak analysis (Model 3 in the paper)
+
 fix_m1 <- fixef(m1)
 a <- fix_m1["I(age_year^2)"]
 b <- fix_m1["age_year"]
@@ -83,6 +116,7 @@ vif(mass_age_mod_pre)
 summary(mass_age_mod_pre)
 tab_model(mass_age_mod_pre)
 
+#output(table s4)
 mass_age_mod_post <- lmer(BodyMass ~ age_year + RightTarsus + SexEstimate  + summer + minutes_s + avg_invert + group_size + (1|BirthYear) +(1|CatchYear) + (1|Observer) + (1|BirdID), 
                           data = post_peak[post_peak$age_cat=="Post",])
 simulationOutput <- simulateResiduals(fittedModel = mass_age_mod_post, plot = T)
@@ -157,38 +191,8 @@ ggsave("./figures/p_mass_plot_post_peak_20260502.pdf", plot = mass_plot_post_pea
 overall_ageing <- (p_m1 | mass_plot_post_peak)+ plot_annotation(tag_levels = "A")
 ggsave("./figures/p_overall_ageing_20260502.pdf", plot = overall_ageing, width = 300, height = 150, units = "mm", dpi = 300,device = cairo_pdf)
 
-#test for minutes^2, not significate
-m2 <- lmer(formula = BodyMass ~ age_year + I(age_year^2) + SexEstimate + RightTarsus + summer + minutes_s + I(minutes_s^2)+ avg_invert + group_size +
-             (1|BirthYear) +(1|CatchYear) + (1|Observer) + (1|BirdID), REML = F ,data = dat)
-simulationOutput <- simulateResiduals(fittedModel = m2, plot = T)
-qqnorm(resid(m2))
-qqline(resid(m2))
-vif(m2)
-summary(m2)
-tab_model(m2)
 
-#Sex interaction
-#Add sex*age_year interaction
-m3 <- lmer(formula = BodyMass ~ age_year*SexEstimate + I(age_year^2)*SexEstimate + RightTarsus + summer + minutes_s + I(minutes_s^2)+ avg_invert + group_size +
-             (1|BirthYear) +(1|CatchYear) + (1|Observer) + (1|BirdID), REML = F ,data = dat)
-simulationOutput <- simulateResiduals(fittedModel = m3, plot = T)
-qqnorm(resid(m3))
-qqline(resid(m3))
-vif(m3)
-summary(m3)
-tab_model(m3)
-
-m3.1 <- lmer(formula = BodyMass ~ age_year*SexEstimate + RightTarsus + summer + minutes_s + avg_invert + group_size +
-               (1|BirthYear) +(1|CatchYear) + (1|Observer) + (1|BirdID), REML = F ,data = dat)
-simulationOutput <- simulateResiduals(fittedModel = m3, plot = T)
-qqnorm(resid(m3.1))
-qqline(resid(m3.1))
-vif(m3.1)
-summary(m3.1)
-tab_model(m3.1)
-
-#test selective disappearance / within–between individual ageing process
-
+#test selective disappearance / within–between individual ageing process (Model 4 to Model 6)
 # Mean-centering within and among 
 m4 <- lmer(BodyMass ~ age_dev + age2_dev + age_mean + SexEstimate + RightTarsus + summer + minutes_s + avg_invert + group_size +
              (1|BirthYear) + (1|CatchYear) + (1|Observer) + (1|BirdID),data = dat, REML = FALSE)

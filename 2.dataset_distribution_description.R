@@ -152,5 +152,3 @@ ggsave("./figures/p_sex_diff_mass20260502.pdf",plot = p_mass_sex,width = 200, he
 #Check for sex biases in tarsus control
 plot(dat$RightTarsus, dat$BodyMass, col = dat$SexEstimate + 1, pch = 1)
 legend("topleft", legend = c("Female", "Male"),col = c(1, 2), pch = 16)
-
-
