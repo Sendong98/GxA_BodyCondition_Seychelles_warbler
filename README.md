@@ -30,6 +30,6 @@ If you have any trouble, please file an issue in the GitHub repository.
 ## License
 MIT
 
-<img src="https://github.com/Sendong98/GxA_BodyCondition_Seychelles_warbler/blob/main/figures/IMG_1053_seychelles_warbler.jpg" width="300" height="200">  <img src="https://github.com/Sendong98/GxA_BodyCondition_Seychelles_warbler/blob/main/figures/DRG_logo_small.2400x2400.jpeg" width="300" height="200">
+<img src="https://github.com/Sendong98/GxA_BodyCondition_Seychelles_warbler/blob/main/figures/IMG_1053_seychelles_warbler.jpg" width="300" height="200">  <img src="https://github.com/Sendong98/GxA_BodyCondition_Seychelles_warbler/blob/main/figures/DRG_logo_small.2400x2400.jpeg" width="200" height="200">
 
 
