@@ -1,5 +1,7 @@
 #heritability estimate - stepwise and using pedigree data
 #load packages
+#the GRM and pedigree data can access with request via email to: 
+#Sen Dong, s.dong@rug.nl; Hannah Dugdale, h.l.dugdale@rug.nl 
 library(brms)
 library(tidybayes)
 library(bayesplot)
